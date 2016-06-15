@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <name>rosserial_tivac_socket</name>
+  <version>0.0.1</version>
+  <description>
+  rosserial_tivac_socket package provides the required hardware definitions for compiling rosserial_client targets for the TivaC Connected Launchpad 
+  evaluation board. 
+  
+  It uses sockets through ethernet connection as its sole means of communication with rosserial.
+  </description>
+  <maintainer email="vmatos.pt@gmail.com">Vitor Matos</maintainer>
+  <license>BSD</license>
+  <url type="website">http://wiki.ros.org/rosserial_tivac_socket</url>
+  <url type="repository">https://github.com/vmatos/rosserial_tivac_socket</url>
+  <author>Vitor Matos</author>
+  <author email="vmatos.pt@gmail.com">Vitor Matos</author>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  
+  <run_depend>rosserial_msgs</run_depend>
+  <run_depend>rosserial_client</run_depend>
+</package>

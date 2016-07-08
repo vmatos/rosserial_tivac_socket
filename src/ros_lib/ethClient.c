@@ -246,7 +246,13 @@ void ethWrite(uint8_t* data, int length)
 {
   if (tcp_sndbuf(g_sConnection.psTCP) >= length)
   {
-    tcp_write(g_sConnection.psTCP, data, length, TCP_WRITE_FLAG_COPY);
+    err_t eError = tcp_write(g_sConnection.psTCP, data, length, TCP_WRITE_FLAG_COPY);
+    
+    if(eError == ERR_OK)
+    {
+      // Find out what we can send and send it
+      tcp_output(g_sConnection.psTCP);
+    }
   }
 }
 

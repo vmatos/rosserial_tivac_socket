@@ -122,7 +122,11 @@
 // ---------- DHCP options ----------
 //
 //*****************************************************************************
+#if !(defined (ROS_IP_ADDRESS) && defined (ROS_NETMASK) && defined (ROS_GW_ADDRESS))
 #define LWIP_DHCP                       1           // default is 0
+#else
+#define LWIP_DHCP                       0           // default is 0
+#endif
 //#define DHCP_DOES_ARP_CHECK             ((LWIP_DHCP) && (LWIP_ARP))
 
 //*****************************************************************************

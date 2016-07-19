@@ -132,7 +132,7 @@ function(GENERATE_TIVAC_FIRMWARE)
     ${ROS_LIB_DIR}/time.cpp
     ${ROS_LIB_DIR}/tivac_hardware.cpp
     ${ROS_LIB_DIR}/ethClient.c
-    ${TIVA_WARE_PATH}/utils/lwiplib.c
+    ${ROS_LIB_DIR}/lwiplib.c
     ${TIVA_WARE_PATH}/utils/ringbuf.c
     # For debugging
     ${TIVA_WARE_PATH}/utils/uartstdio.c

@@ -76,7 +76,7 @@ set(LINKER_SPECS ${CMAKE_CURRENT_LIST_DIR}/../tiva.specs)
 
 set(CMAKE_SHARED_LIBRARY_LINK_C_FLAGS "")
 set(CMAKE_SHARED_LIBRARY_LINK_CXX_FLAGS "")
-set(CMAKE_EXE_LINKER_FLAGS "-T${LINKER_SCRIPT_TM4C1294XL} -specs=${LINKER_SPECS} -Wl,-Map=memmap.map" CACHE STRING "" FORCE)
+set(CMAKE_EXE_LINKER_FLAGS "-T${LINKER_SCRIPT_TM4C1294XL} -specs=${LINKER_SPECS} -specs=nosys.specs -specs=nano.specs -Wl,-Map=memmap.map" CACHE STRING "" FORCE)
 
 # Processor specific definitions
 add_definitions(-Dgcc)
@@ -98,7 +98,7 @@ function(GENERATE_TIVAC_FIRMWARE)
   message(STATUS "[TIVAC] Configuring board for ${CMAKE_PROJECT_NAME}")
   add_definitions(-DPART_TM4C1294NCPDT)
   add_definitions(-DTARGET_IS_TM4C129_RA0)
-  set(CMAKE_EXE_LINKER_FLAGS "-T${LINKER_SCRIPT_TM4C1294XL} -specs=${LINKER_SPECS} -Wl,-Map=memmap.map" CACHE STRING "" FORCE)
+  set(CMAKE_EXE_LINKER_FLAGS "-T${LINKER_SCRIPT_TM4C1294XL} -specs=${LINKER_SPECS} -specs=nosys.specs -specs=nano.specs -Wl,-Map=memmap.map" CACHE STRING "" FORCE)
   
   if(INPUT_STARTUP)
     message(STATUS "[TIVAC] Using custom startup file ${INPUT_STARTUP} for ${CMAKE_PROJECT_NAME}")

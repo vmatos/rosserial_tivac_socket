@@ -95,7 +95,7 @@ void ethInit(uint32_t ui32SysClkFreq, const char *ipAddress)
   
   // Initialize the lwIP library, using DHCP.
 #if defined (ROS_IP_ADDRESS) && defined (ROS_NETMASK)
-  #pragma message "Using static IP address"
+  #pragma message "[TIVAC_SOCKET] Using static IP address"
   uint32_t ui32NetMask = ipaddr_addr(ROS_NETMASK);
   uint32_t ui32IPAddress = ipaddr_addr(ROS_IP_ADDRESS);
   lwIPInit(ui32SysClkFreq, g_sConnection.pui8MACArray, htonl(ui32IPAddress), htonl(ui32NetMask), 0, IPADDR_USE_STATIC);

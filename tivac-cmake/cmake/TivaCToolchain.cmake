@@ -12,6 +12,7 @@
 #   generate_tivac_firmware
 # 
 # With Arguments:
+#     DEVICE_SILICON  - Optional argument. Defines the specific chip's silicon revision.
 #     DEVICE_SERIAL  - Optional argument. Creates flash target for specific device.
 #     STARTUP - Optional argument. Takes the name of custom startup file.
 #     SRCS    - Required. List of source files to compile.
@@ -91,13 +92,18 @@ set(FLASH_EXECUTABLE $ENV{TIVA_FLASH_EXECUTABLE})
 function(GENERATE_TIVAC_FIRMWARE)
   message(STATUS "[TIVAC] Generating firmware ${CMAKE_PROJECT_NAME}")
   set(options )
-  set(oneValueArgs STARTUP DEVICE_SERIAL)
+  set(oneValueArgs STARTUP DEVICE_SILICON DEVICE_SERIAL)
   set(multiValueArgs SRCS INCS LIBS)
   cmake_parse_arguments(INPUT "${options}" "${oneValueArgs}" "${multiValueArgs}" ${ARGN})
   
   message(STATUS "[TIVAC] Configuring board for ${CMAKE_PROJECT_NAME}")
+  add_definitions(-DTM4C1294XL)
   add_definitions(-DPART_TM4C1294NCPDT)
-  add_definitions(-DTARGET_IS_TM4C129_RA0)
+  if(NOT INPUT_DEVICE_SERIAL)
+    add_definitions(-DTARGET_IS_TM4C129_RA1)
+  else()
+    add_definitions(-D${INPUT_DEVICE_SERIAL})
+  endif()
   set(CMAKE_EXE_LINKER_FLAGS "-T${LINKER_SCRIPT_TM4C1294XL} -specs=${LINKER_SPECS} -specs=nosys.specs -specs=nano.specs -Wl,-Map=memmap.map" CACHE STRING "" FORCE)
   
   if(INPUT_STARTUP)

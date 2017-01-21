@@ -54,7 +54,7 @@ extern "C"
 #define SYSTICKMS  (1000 / SYSTICKHZ)
 
 // Should only be for TM4C129
-#ifdef TARGET_IS_TM4C129_RA0
+#ifdef TM4C1294XL
 #define LED1        GPIO_PIN_1  // D1 LED
 #define LED_PORT    GPIO_PORTN_BASE
 #define LED_PERIPH  SYSCTL_PERIPH_GPION
